@@ -16,10 +16,9 @@
 # specific language governing permissions and limitations
 # under the License.
 
-source /multibuild/manylinux_utils.sh
-
 LLVM_VERSION="7.0.1"
 PREFIX="/usr/local"
+PYTHON_EXECUTABLE=/opt/python/cp27-cp27m/bin/python
 
 curl -sL http://releases.llvm.org/${LLVM_VERSION}/llvm-${LLVM_VERSION}.src.tar.xz -o llvm-${LLVM_VERSION}.src.tar.xz
 unxz llvm-${LLVM_VERSION}.src.tar.xz
@@ -39,7 +38,7 @@ cmake -DCMAKE_INSTALL_PREFIX=$PREFIX \
     -DLLVM_ENABLE_RTTI=ON \
     -DLLVM_ENABLE_OCAMLDOC=OFF \
     -DLLVM_USE_INTEL_JITEVENTS=ON \
-    -DPYTHON_EXECUTABLE="$(cpython_path 2.7 32)/bin/python" \
+    -DPYTHON_EXECUTABLE=${PYTHON_EXECUTABLE} \
     -GNinja \
     ..
 ninja install
