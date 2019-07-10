@@ -18,7 +18,7 @@
 # Includes code assembled from BSD/MIT/Apache-licensed code from some 3rd-party
 # projects, including Kudu, Impala, and libdynd. See python/LICENSE.txt
 
-cmake_minimum_required(VERSION 2.7)
+cmake_minimum_required(VERSION 3.13)
 project(pyarrow)
 
 # Running from a Python sdist tarball
@@ -31,14 +31,6 @@ endif()
 set(CPP_CMAKE_MODULES "${CMAKE_SOURCE_DIR}/../cpp/cmake_modules")
 if(EXISTS "${CPP_CMAKE_MODULES}")
   set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CPP_CMAKE_MODULES})
-endif()
-
-include(CMakeParseArguments)
-
-# Compatibility with CMake 3.1
-if(POLICY CMP0054)
-  # http://www.cmake.org/cmake/help/v3.1/policy/CMP0054.html
-  cmake_policy(SET CMP0054 NEW)
 endif()
 
 # Allow "make install" to not depend on all targets.
