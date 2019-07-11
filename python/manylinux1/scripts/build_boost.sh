@@ -34,7 +34,7 @@ ls -l
 ./bootstrap.sh
 ./bjam -j${NCORES} dll-path="'\$ORIGIN/'" cxxflags='-std=c++11 -fPIC' cflags=-fPIC linkflags="-std=c++11" variant=release link=shared --prefix=/arrow_boost_dist --with-filesystem --with-date_time --with-system --with-regex install
 popd
-rm -rf boost_${BOOST_VERSION_UNDERSCORE}.tar.gz boost_${BOOST_VERSION_UNDERSCORE} arrow_boost
+rm -rf /boost_${BOOST_VERSION_UNDERSCORE}.tar.gz /boost_${BOOST_VERSION_UNDERSCORE} /arrow_boost
 # Boost always install header-only parts but they also take up quite some space.
 # We don't need them in array, so don't persist them in the docker layer.
 # fusion 16.7 MiB
